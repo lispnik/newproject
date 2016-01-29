@@ -8,6 +8,4 @@
   "Create a new project from a template."
   )
 
-(defun initialize ())
-(defun copy-directory-structure ())
-(defun apply-file-substitution ())
+;; copy skeleton to /tmp dir and then apply transforms
