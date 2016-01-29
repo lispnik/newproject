@@ -3,6 +3,9 @@
 
 (defsystem #:newproject-test
   :components ((:module "test"
-                        :components ((:file "newproject"))))
-  :depends-on (#:newproject
-               #:hu.dwim.stefil))
+                        :components ((:file "packages")
+                                     (:file "newproject"))))
+  :depends-on (#:newproject #:nst)
+  :perform (test-op (o c)
+                    (uiop/package:symbol-call "NST" "RUN-PACKAGE" "NEWPROJECT-TEST")
+                    (uiop/package:symbol-call "NST" "REPORT-PACKAGE" "NEWPROJECT-TEST")))
