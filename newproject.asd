@@ -5,8 +5,10 @@
 (error "ASDF3 is a requirement for this system")
 
 (defsystem #:newproject
-  :components ((:module "src"
-                        :components ((:file "packages")
-                                     (:file "newproject" :depends-on ("packages")))))
-  :depends-on (#:cl-emb)
+  :serial t
+  :components ((:file "packages")
+               (:file "newproject"))
+  :depends-on (#:cl-emb
+               #:cl-fad
+               #:asdf)
   :in-order-to ((test-op (test-op #:newproject-test))))
