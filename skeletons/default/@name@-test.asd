@@ -9,5 +9,5 @@
                                      (:file "@name@"))))
   :perform (test-op (operation system)
                     (uiop:symbol-call "FIVEAM" "RUN!"
-                                      (uiop:find-symbol* "ALISTS-TEST-SUITE" "ALISTS-TEST")))
+                                      (uiop:find-symbol* "@NAME@.TEST"  "@NAME@.TEST")))
   :depends-on (#:@name@ #:fiveam))

@@ -41,14 +41,14 @@ is replaced with replacement."
 (defun copy-file (source-root source-file destination-root substitutions)
   (let* ((destination-namestring (perform-substitutions (enough-namestring source-file source-root) substitutions))
          (destination-file (merge-pathnames (parse-namestring destination-namestring) destination-root)))
-    (format t "~S -> ~S" source-file destination-file)
+    (format t "Copying ~A -> ~A~%" source-file destination-file)
     (if (directory-pathname-p source-file)
         (ensure-directories-exist destination-file)
         (with-open-file (input source-file :direction :input :element-type 'character)
           (with-open-file (output destination-file :direction :output :if-does-not-exist :create :if-exists :error)
             (let* ((text (make-array (file-length input) :element-type 'character)))
               (read-sequence text input)
-              (write-sequence (print (perform-substitutions text substitutions)) output)))))))
+              (write-sequence (perform-substitutions text substitutions) output)))))))
 
 (defun copy-project (source-root destination-root substitutions)
   (walk-directory source-root

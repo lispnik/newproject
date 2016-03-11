@@ -3,4 +3,5 @@
   (:import-from #:cl-fad
                 #:walk-directory
                 #:directory-pathname-p)
-  (:export #:newproject))
+  (:export #:create-project-from-builtin
+           #:create-project))
