@@ -1,4 +1,4 @@
 (defpackage #:@name@
   (:use #:common-lisp)
-  (:export)
+  (:export #:example)
   (:documentation ""))
