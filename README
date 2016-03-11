@@ -1,0 +1,5 @@
+Examples
+
+(create-project-from-builtin "foo" :destination-root #p"/tmp/foo/")
+
+(create-project "foo" :destination-root #p"/tmp/foo/" :template-name "default" :template-root #p"/Users/mkennedy/Projects/newproject/skeletons/")

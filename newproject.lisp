@@ -3,13 +3,19 @@
 (defun make-substitution-list (name)
   `(("@name@" . ,name)))
 
-(defun create-project
-    (name &key pathname (template "default") (template-root-pathname (merge-pathnames (asdf:component-pathname (asdf:find-system "newproject")) #p "skeletons/")))
-  "Create a new project NAME from a TEMPLATE."
-  (let ((pathname (merge-pathnames (make-pathname :directory `(:relative ,name)) pathname))
-        (template-pathname (merge-pathnames template-root-pathname pathname)))
-    (let ((substitutions (make-substitution-list name)))
-      (copy-project  template-pathname pathname substitutions))))
+(defun create-project (name &key template-name destination-root template-root)
+  (let ((substitutions (make-substitution-list name)))
+    (copy-project (merge-pathnames (make-pathname :directory `(:relative ,template-name))
+                                   template-root)
+                  destination-root
+                  substitutions)))
+
+(defun create-project-from-builtin (name &key (template-name "default") (destination-root #p"./"))
+  (create-project
+   name
+   :destination-root destination-root
+   :template-name template-name
+   :template-root (merge-pathnames  #p"skeletons/" (asdf:component-pathname (asdf:find-system "newproject")))))
 
 ;;; from http://cl-cookbook.sourceforge.net/strings.html#manip
 (defun replace-all (string part replacement &key (test #'char=))
