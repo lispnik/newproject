@@ -1,7 +1,8 @@
 (in-package #:newproject)
 
 (defun make-substitution-list (name)
-  `(("@name@" . ,name)))
+  `(("@name@" . ,name)
+    ("@NAME@" . ,(string-upcase name))))
 
 (defun create-project (name &key template-name destination-root template-root)
   (let ((substitutions (make-substitution-list name)))
