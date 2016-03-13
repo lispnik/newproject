@@ -11,7 +11,10 @@
                   destination-root
                   substitutions)))
 
-(defun create-project-from-builtin (name &key (template-name "default") (destination-root #p"./"))
+(defun create-project-from-builtin
+    (name
+     &key (template-name "default") destination-root
+     &aux (destination-root (make-pathname :directory `(:relative ,name))))
   (create-project
    name
    :destination-root destination-root
@@ -43,9 +46,9 @@ is replaced with replacement."
   (let* ((destination-namestring (perform-substitutions (enough-namestring source-file source-root) substitutions))
          (destination-file (merge-pathnames (parse-namestring destination-namestring) destination-root)))
     (format t "Copying ~A -> ~A~%" source-file destination-file)
-    (if (directory-pathname-p source-file)
-        (ensure-directories-exist destination-file)
-        (with-open-file (input source-file :direction :input :element-type 'character)
+    (ensure-directories-exist destination-file)
+    (unless (directory-pathname-p source-file)
+      (with-open-file (input source-file :direction :input :element-type 'character)
           (with-open-file (output destination-file :direction :output :if-does-not-exist :create :if-exists :error)
             (let* ((text (make-array (file-length input) :element-type 'character)))
               (read-sequence text input)

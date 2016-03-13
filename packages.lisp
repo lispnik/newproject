@@ -4,4 +4,5 @@
                 #:walk-directory
                 #:directory-pathname-p)
   (:export #:create-project-from-builtin
-           #:create-project))
+           #:create-project
+           #:newproject))
