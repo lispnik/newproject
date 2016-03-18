@@ -3,10 +3,7 @@
 newproject
 ==========
 
-Description
------------
-
-A file, directory, filter based template approach to project creation.
+A file, directory, filter based template approach to new project creation.
 
 Usage
 -----
