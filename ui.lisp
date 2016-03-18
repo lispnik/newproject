@@ -23,7 +23,6 @@
   (let* ((name (prompt "Project name?"))
          (destination-root (prompt "Destination root pathname?" (make-pathname :directory `(:relative ,name))))
          (template-name (prompt "Template name?" "default")))
-    (print (list name destination-root template-name))
     (create-project-from-builtin
      name
      :template-name template-name

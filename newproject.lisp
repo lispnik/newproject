@@ -13,8 +13,7 @@
 
 (defun create-project-from-builtin
     (name
-     &key (template-name "default") destination-root
-     &aux (destination-root (make-pathname :directory `(:relative ,name))))
+     &key (template-name "default") (destination-root (make-pathname :directory `(:relative ,name))))
   (create-project
    name
    :destination-root destination-root

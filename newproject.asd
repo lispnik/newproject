@@ -7,7 +7,8 @@
 (defsystem #:newproject
   :serial t
   :components ((:file "packages")
-               (:file "newproject"))
+               (:file "newproject")
+               (:file "ui"))
   :depends-on (#:cl-emb
                #:cl-fad
                #:asdf)
