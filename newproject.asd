@@ -9,7 +9,7 @@
   :components ((:file "packages")
                (:file "newproject")
                (:file "ui"))
-  :depends-on (#:cl-emb
-               #:cl-fad
-               #:asdf)
+  :depends-on (#:cl-fad
+               #:asdf
+               #:alexandria)
   :in-order-to ((test-op (test-op #:newproject-test))))

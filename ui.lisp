@@ -1,6 +1,6 @@
 (in-package #:newproject)
 
-(defconstant +clippy-bastard+ "
+(define-constant +clippy-bastard+ "
     ╭──╮
     │  │     ╭────────────────────────────────────────╮
     @  @     │ Hi! It looks like you're creating a    │
