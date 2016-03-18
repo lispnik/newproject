@@ -8,7 +8,8 @@
     ││ ││    ╰────────────────────────────────────────╯
     │╰─╯│
     ╰───╯
-")
+"
+  :test #'equal)
 
 (defun prompt (prompt &optional default)
   (format t "~A ~@[(~S)~] " prompt default)
