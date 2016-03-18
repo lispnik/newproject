@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/lispnik/newproject.svg?branch=master)](https://travis-ci.org/lispnik/newproject)
+
 * newproject
 
 ** Description
