@@ -2,10 +2,12 @@
 (in-package #:newproject-test-system)
 
 (defsystem #:newproject-test
+  :serial t
   :components ((:module "test"
                         :components ((:file "packages")
-                                     (:file "newproject"))))
+                                     (:file "suites")
+                                     (:file "tests"))))
   :depends-on (#:newproject #:fiveam)
   :perform (test-op (o c)
                     (uiop:symbol-call "FIVEAM" "RUN!"
-                                      (uiop:find-symbol* "NEWPROJECT-TEST-SUITE" "NEWPROJECT-TEST"))))
+                                      (uiop:find-symbol* "NEWPROJECT-TEST" "NEWPROJECT-TEST"))))
