@@ -1,9 +1,7 @@
 (in-package #:newproject-test)
 
-;; (def-test-group example ())
+(def-suite newproject-test-suite)
+(in-suite newproject-test-suite)
 
-;; (def-test (example1 :group example)
-;;     (:eq 4 (example 2 2)))
-
-;; (def-test (example2 :group example)
-;;     (:eq 4 (example 2 3)))
+(test example.1
+      (is (= 2 (+ 1 1))))

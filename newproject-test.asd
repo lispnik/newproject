@@ -5,7 +5,7 @@
   :components ((:module "test"
                         :components ((:file "packages")
                                      (:file "newproject"))))
-  :depends-on (#:newproject #:nst)
+  :depends-on (#:newproject #:fiveam)
   :perform (test-op (o c)
-                    (uiop/package:symbol-call "NST" "RUN-PACKAGE" "NEWPROJECT-TEST")
-                    (uiop/package:symbol-call "NST" "REPORT-PACKAGE" "NEWPROJECT-TEST")))
+                    (uiop:symbol-call "FIVEAM" "RUN!"
+                                      (uiop:find-symbol* "NEWPROJECT-TEST-SUITE" "NEWPROJECT-TEST"))))

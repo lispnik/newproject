@@ -1,4 +1,5 @@
 (defpackage #:newproject-test
   (:use #:common-lisp
-        #:newproject
-        #:nst))
+        #:fiveam
+        #:newproject)
+  (:export #:newproject-test-suite))
