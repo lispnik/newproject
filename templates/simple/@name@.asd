@@ -10,15 +10,9 @@
   :license ""
   :serial t
   :components ((:file "packages")
-               (:file "@name@"))
-  :in-order-to ((test-op (test-op #:@name@-test))))
-
-(defsystem #:@name@-test
-  :serial t
-  :components ((:module "test"
-                        :components ((:file "packages")
-                                     (:file "tests"))))
+               (:file "@name@")
+               (:file "tests"))
+  :depends-on  (#:@name@ #:fiveam)
   :perform (test-op (operation system)
                     (uiop:symbol-call "FIVEAM" "RUN!"
-                                      (uiop:find-symbol* "@NAME@.TEST"  "@NAME@.TEST")))
-  :depends-on (#:@name@ #:fiveam))
+                                      (uiop:find-symbol* "@NAME@.TEST"  "@NAME@.TEST"))))
