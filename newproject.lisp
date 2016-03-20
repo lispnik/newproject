@@ -18,7 +18,7 @@
    name
    :destination-root destination-root
    :template-name template-name
-   :template-root (merge-pathnames  #p"skeletons/" (asdf:component-pathname (asdf:find-system "newproject")))))
+   :template-root (merge-pathnames  #p"templates/" (asdf:component-pathname (asdf:find-system "newproject")))))
 
 ;;; from http://cl-cookbook.sourceforge.net/strings.html#manip
 (defun replace-all (string part replacement &key (test #'char=))
