@@ -2,4 +2,6 @@
   (:use #:common-lisp
         #:fiveam
         #:newproject)
-  (:export #:newproject-test-suite))
+  (:import-from #:osicat-posix
+                #:mkdtemp)
+  (:export #:newproject-test))
