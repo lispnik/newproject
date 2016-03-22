@@ -7,7 +7,7 @@
                         :components ((:file "packages")
                                      (:file "suites")
                                      (:file "tests"))))
-  :depends-on (#:newproject #:osicat #:fiveam)
+  :depends-on (#:newproject #:osicat #:fiveam #:uiop)
   :perform (test-op (o c)
                     (uiop:symbol-call "FIVEAM" "RUN!"
                                       (uiop:find-symbol* "NEWPROJECT-TEST" "NEWPROJECT-TEST"))))

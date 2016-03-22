@@ -7,7 +7,9 @@
            ,var)
        (unwind-protect
             (progn
-              (setf ,var (osicat-posix:mkdtemp (format nil "~Awith-tempdir" (namestring osicat:*temporary-directory*))))
+              (setf ,var (uiop/pathname:parse-unix-namestring
+                          (osicat-posix:mkdtemp (format nil "~Awith-tempdir" (namestring osicat:*temporary-directory*)))
+                          :type :directory))
               (if ,temp-change-dir
                   (let ((,old-dir (osicat:current-directory)))
                     (unwind-protect
@@ -22,17 +24,14 @@
 
 (in-suite newproject-test)
 
-(test example.1
-  (is (= 2 (+ 1 1))))
-
 (in-suite simple-test)
 
 (test simple.1
-  (finishes
-    (with-temporary-directory ))
-  )
+  (with-temporary-directory (test-root)
+    (let ((destination-root (make-pathname :directory (append (pathname-directory test-root) (list "simple.1")))))
+      (newproject:create-project-from-builtin "foo" :template-name "simple" :destination-root destination-root)
+      (is (uiop:directory-exists-p destination-root))
+      ;; FIXME: test individual files
+      (is (uiop:file-exists-p (uiop/pathname:parse-unix-namestring #p "/tmp/foo" :type :directory))))))
 
 (in-suite default-test)
-
-
-(swapf )
