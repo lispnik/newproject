@@ -12,7 +12,7 @@
   :components ((:file "packages")
                (:file "@name@")
                (:file "tests"))
-  :depends-on  (#:@name@ #:fiveam)
+  :depends-on  (#:fiveam)
   :perform (test-op (operation system)
                     (uiop:symbol-call "FIVEAM" "RUN!"
                                       (uiop:find-symbol* "@NAME@.TEST"  "@NAME@.TEST"))))
